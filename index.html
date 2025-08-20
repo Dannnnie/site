@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            
+            div.first{
+                color: white;
+                background-color: #0af3c1;
+                height: 200px;
+                margin: 10px;
+                padding-top: 100px;
+                text-align: center;
+                animation: first 2s linear infinite alternate;
+            }
+            @keyframes first {
+                from {
+                    background-image: url(./logo.png);
+                    background-position: left;
+                    background-size: 100px 100px;
+                    background-repeat: no-repeat;
+                }
+                to {
+                    background-image: url(./logo1.png);
+                    background-position: right;
+                    background-size: 100px 100px;
+                    background-repeat: no-repeat;
+                }
+            }
+            div.second{
+                color: yellow;
+                background-color: rgb(29, 191, 219);
+                height: 200px;
+                margin: 10px;
+                padding-top: 100px;
+                text-align: center;
+                animation: second 2s cubic-bezier(0.6, -0.28, 0.74, 0.05) infinite alternate;
+            }
+            @keyframes second {
+                from{
+                    background-image: url(./logo1.png);
+                    background-position: left;
+                    background-size: 100px 100px;
+                    background-repeat: no-repeat;
+                }
+                to {
+                    background-image: url(./logo.png);
+                    background-position: right;
+                    background-size: 100px 100px;
+                    background-repeat: no-repeat;
+                    font-size: 50PX;
+                    font-variant-caps: small-caps;
+                }
+            }
+            .main{
+                position: relative;
+                background-color: #bacc14be;
+                width: 50%;
+                height: 100px;
+                margin: 10px;
+            }
+            .inner{
+                background-color: rgb(255, 255, 255);
+                width: 10px;
+                height: 10px;
+                margin-left: 50%;
+                border-radius: 50%;
+                position: relative;
+                
+                
+                animation: move 3s linear infinite alternate;
+                
+            }
+            @keyframes move {
+                25%{
+                    bottom: 10px;
+                }
+                50%{
+                    left: 10px;
+                }
+                75%{
+                    right: 10px;
+                }
+                100%{
+                    top: 10px;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="first">FIRST</div>
+        <div class="second">SECOND</div>
+        <button class="btn1" onclick="first()">first pause</button>
+        <button class="btn2" onclick="second()">second pause</button>
+        <div class="main">
+            <div class="inner"></div>
+        </div>
+        <script>
+            function first(){
+                var play1 = document.querySelector(".first");
+                var btn = document.querySelector(".btn1");
+                play1.style.animationPlayState = "paused";
+                //play2.style.animationPlayState ="paused";
+                if(btn.innerText == "continue"){
+                    btn.innerText = "pause";
+                    play1.style.animationPlayState ="running";
+                }
+                else{
+                    btn.innerText = "continue";
+                     play1.style.animationPlayState ="paused";
+                }
+            }
+            function second(){
+                var play2 = document.querySelector(".second");
+                var btn = document.querySelector(".btn2");
+                play2.style.animationPlayState ="paused";
+                var checker = play2.style.animationPlayState;
+                if(btn.innerText == "continue"){
+                    btn.innerText = "pause";
+                    play2.style.animationPlayState ="running";
+                }
+                else{
+                    btn.innerText = "continue";
+                     play2.style.animationPlayState ="paused";
+                }
+            }
+        </script>
+    </body>
+</html>
